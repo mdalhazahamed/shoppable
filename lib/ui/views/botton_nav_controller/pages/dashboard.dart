@@ -62,7 +62,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Special Offers", style: TextStyle(fontSize: 18.sp)),
+                  Text("Special Offers",
+                      style: TextStyle(
+                          fontSize: 18.sp, fontWeight: FontWeight.w600)),
                   Text(
                     "See all",
                     style:
@@ -71,48 +73,96 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ],
               ),
             ),
+            specialProducts(),
             Padding(
-              padding: EdgeInsets.only(left: 25.sp, top: 8.sp),
-              child: InkWell(
-                onTap: () {},
-                child: Row(
-                  children: [
-                    Container(
-                      height: 115.h,
-                      width: 105.w,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6.r),
-                      ),
-                      child: Column(
-                        children: [
-                          Image.asset("assets/images/product.jpg", width: 60.w),
-                          Text(
-                            "Iphone 12 Pro",
-                            style: TextStyle(
-                                fontSize: 12.sp, fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            "24,900",
-                            style: TextStyle(
-                                decoration: TextDecoration.lineThrough,
-                                fontSize: 8.5.sp,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.grey),
-                          ),
-                          Text(
-                            "22,990",
-                            style: TextStyle(
-                                fontSize: 11.sp, fontWeight: FontWeight.w700),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              padding: EdgeInsets.only(top: 20.sp, left: 16.w, right: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("All Products",
+                      style: TextStyle(
+                          fontSize: 18.sp, fontWeight: FontWeight.w600)),
+                ],
               ),
             ),
+            // GridView.builder(
+            //   shrinkWrap: true,
+            //   physics: NeverScrollableScrollPhysics(),
+            //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //     crossAxisCount: 2,
+            //     crossAxisSpacing: 12.0,
+            //     mainAxisSpacing: 12.0,
+            //   ),
+            //   itemBuilder: (context, index) {
+            //     return Container(
+            //       decoration: BoxDecoration(
+            //         color: Colors.red,
+            //       ),
+            //     );
+            //   },
+            // ),
           ],
+        ),
+      ),
+    );
+  }
+
+  SingleChildScrollView specialProducts() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Container(
+        child: Padding(
+          padding: EdgeInsets.only(left: 14.w, top: 10.h),
+          child: Row(
+            children: [
+              Container(
+                height: 115.h,
+                color: Color(0xFFF1FBF8),
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 6),
+                      child: Container(
+                        height: 115.h,
+                        width: 105.w,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6.r),
+                        ),
+                        child: Column(
+                          children: [
+                            Image.asset("assets/images/product.jpg",
+                                width: 60.w),
+                            Text(
+                              "Iphone 12 Pro",
+                              style: TextStyle(
+                                  fontSize: 12.sp, fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              "24,900",
+                              style: TextStyle(
+                                  decoration: TextDecoration.lineThrough,
+                                  fontSize: 8.5.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.grey),
+                            ),
+                            Text(
+                              "22,990",
+                              style: TextStyle(
+                                  fontSize: 11.sp, fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
